@@ -41,6 +41,9 @@ class ShowOneEmployee(DetailView):  # Отображает детальную и
     context_object_name = 'employee'
 
 
+
+
+
 class AddNewEmployee(View):
     def get(self, request):
         form = RegistrationForm()

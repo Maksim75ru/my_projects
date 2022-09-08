@@ -26,7 +26,7 @@ class Person(models.Model):
         super(Person, self).save(*args, **kwargs)
 
     def get_url(self):  # Создали эту функцию, чтобы в шаблоне(all_movies) прописывать не полный адрес по типу url 'name...', а эту функцию
-        return reverse('employee_detail', args=[self.slug])
+        return reverse('employee_detail', args=[self.pk])
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
