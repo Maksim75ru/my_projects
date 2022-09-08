@@ -26,9 +26,9 @@ class RegistrationForm(forms.ModelForm):
         # fields = '__all__'
         exclude = ['slug']
 
-        widgets = {   # Нужно переопределить чтобы данные вносились в две таблицы и была связь между ними
-            'position': Textarea()
-        }
+        # widgets = {   # Нужно переопределить чтобы данные вносились в две таблицы и была связь между ними
+        #     'position': Textarea()
+        # }
 
         labels = {
             'first_name': 'Имя',

@@ -7,7 +7,7 @@ from django.views.generic import ListView
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from datetime import date
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView
 # Create your views here.
 
 
@@ -40,22 +40,26 @@ class ShowOneEmployee(DetailView):  # Отображает детальную и
     model = Person
     context_object_name = 'employee'
 
+# Заменил на более специфичный AddNewEmployee(CreateView)
+# class AddNewEmployee(View):
+#     def get(self, request):
+#         form = RegistrationForm()
+#         return render(request, 'rst_birthday_app/registration_page.html', context={'form': form})
+#
+#     def post(self, request):
+#         if request.method == 'POST':
+#             form = RegistrationForm(request.POST)
+#             if form.is_valid():
+#                 form.save()
+#                 return HttpResponseRedirect('/done')
+#             return render(request, 'rst_birthday_app/registration_page.html', context={'form': form})
 
 
-
-
-class AddNewEmployee(View):
-    def get(self, request):
-        form = RegistrationForm()
-        return render(request, 'rst_birthday_app/registration_page.html', context={'form': form})
-
-    def post(self, request):
-        if request.method == 'POST':
-            form = RegistrationForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return HttpResponseRedirect('/done')
-            return render(request, 'rst_birthday_app/registration_page.html', context={'form': form})
+class AddNewEmployee(CreateView):
+    model = Person
+    form_class = RegistrationForm
+    template_name = 'rst_birthday_app/registration_page.html'
+    success_url = '/done'
 
 
 def done(request):
