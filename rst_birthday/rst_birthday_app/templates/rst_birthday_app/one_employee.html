@@ -1,0 +1,10 @@
+{% extends 'rst_birthday_app/base.html' %}
+
+{% block title %} {{ employee.first_name }} {{employee.last_name}} {% endblock %}
+
+
+{% block content %}
+  <h2>Информация о {{ employee.first_name }} {{ employee.last_name }}</h2>
+  <h3>Дата рождения {{ employee.born_day }}</h3>
+  <h3>Дата трудоустройства в компанию {{ employee.hire_day }}</h3>
+{% endblock %}

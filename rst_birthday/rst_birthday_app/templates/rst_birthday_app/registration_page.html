@@ -1,0 +1,20 @@
+{% extends 'rst_birthday_app/base.html' %}
+
+{% block title %} Регистрация сотрудника {% endblock %}
+
+{% block content %}
+    <h2>Введите данные нового сотрудника</h2>
+    <form method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+        <div>
+            {{ field.label_tag }}<br>
+            {{ field.errors }}
+            {{ field }}
+        </div><br>
+    {% endfor %}
+
+    <button type="submit">Отправить</button>
+    </form>
+{% endblock %}

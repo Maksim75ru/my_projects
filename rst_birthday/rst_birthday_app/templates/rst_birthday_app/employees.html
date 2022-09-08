@@ -1,0 +1,19 @@
+{% extends 'rst_birthday_app/base.html' %}
+
+{% block title %} Все сотрудники {% endblock %}
+
+
+{% block content %}
+    <h2>Cписок сотрудников компании ООО "РСТ"</h2>
+    <h4>Всего сотрудников в компании - {{ agg.id__count }}</h4>
+    <h4>Самый старший сотрудник - {{ old_employee }}, {{ old_age_employee }} лет, {{ agg.born_day__min }} </h4>
+    <h4>Самый молодой сотрудник - {{ young_employee }}, {{ young_age_employee }} лет, {{ agg.born_day__max }} </h4>
+
+    <ol>
+        {% for employee in employees %}
+        <!--Пишем вместо url функцию из ЭК movie, что лежит в models-->
+            <li> <h4> <a href="{{ employee.get_url }}"> {{employee.first_name}} {{employee.last_name}}</a> {{employee.born_day}} </h4> </li>
+        {% endfor %}
+    </ol>
+
+{% endblock %}
