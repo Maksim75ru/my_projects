@@ -111,6 +111,7 @@ env.bak/
 venv.bak/
 .idea
 /**/__init__
+**.DS_Store
 # Spyder project settings
 .spyderproject
 .spyproject
